@@ -55,10 +55,10 @@ doIt <- function(directory, outputFileName)
   selectedFeatures <- c(selectedFeatures, "Activity", "Subject")
   re <- paste(selectedFeatures, collapse="|")
   ## filter the features that we want
-  dt <- dt[,grep(re, n)]
+  dt2 <- dt[,grep(re, n)]
   
   ## write to a file
-  write.csv(dt, file=outputFileName, row.names = F)
+  write.csv(dt2, file=outputFileName, row.names = F)
   
   mdt <- melt(dt, id=c("Subject", "Activity"))  
   df <- dcast(mdt, Subject + Activity ~ variable, mean)
